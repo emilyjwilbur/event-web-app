@@ -1,9 +1,12 @@
 import React from 'react';
+import EventDashboard from '../../features/events/eventDashboard/EventDashboard';
+import NavBar from '../../features/nav/NavBar';
 
 function App() {
   return (
-    <div className="App">
-      <h1>EventSpace</h1>
+    <div>
+      <NavBar />
+      <EventDashboard />
     </div>
   );
 }
