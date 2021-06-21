@@ -12,7 +12,7 @@ export default function EventListItem () {
                     <Item.Content>
                         <Item.Header content='Event Title'/>
                         <Item.Description>
-                            Host by Bob
+                            Hosted by Person
                         </Item.Description>
                     </Item.Content>
                  </Item>
