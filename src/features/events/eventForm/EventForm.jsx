@@ -26,7 +26,7 @@ return (
                 <input type="date" placeholder='Date' />
             </Form.Field>
             <Button  type='submit' floated='right' positive content='Submit' />
-            <Button  type='submit' floated='right' content='Cancel' />
+            <Button  type='submit' floated='right'  content='Cancel' />
         </Form>
     </Segment>
 )
