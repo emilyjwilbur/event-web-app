@@ -2,20 +2,26 @@ import cuid from "cuid";
 import React, { useState } from "react";
 import { Form, Header, Segment, Button } from "semantic-ui-react";
 
-export default function EventForm({ setFormOpen, setEvents, createEvent }) {
-  const initialValues = {
-    title: '',
-    category: '',
-    description: '',
-    city: '',
-    venue: '',
-    date: '',
+export default function EventForm({ setFormOpen, setEvents, createEvent, selectedEvent }) {
+  const initialValues = selectedEvent ?? {
+    title: "",
+    category: "",
+    description: "",
+    city: "",
+    venue: "",
+    date: "",
   };
 
   const [values, setValues] = useState(initialValues);
 
   function handleFormSubmit() {
-    createEvent({...values, id: cuid(), hostedBy:'Bob', attendees: []});
+    createEvent({
+      ...values,
+      id: cuid(),
+      hostedBy: "Bob",
+      attendees: [],
+      hostPhotoURL: "/assets/user.png",
+    });
     setFormOpen(false);
   }
 
