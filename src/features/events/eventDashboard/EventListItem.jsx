@@ -39,7 +39,7 @@ export default function EventListItem({ event, selectEvent, deleteEvent }) {
         />
         <Button
           onClick={() => selectEvent(event)}
-          color="teal"
+          color=""
           floated="right"
           content="View"
         />
