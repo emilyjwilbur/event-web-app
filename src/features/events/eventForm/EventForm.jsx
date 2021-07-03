@@ -1,12 +1,13 @@
 import cuid from "cuid";
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Header, Segment, Button, FormField, Label } from "semantic-ui-react";
+import { Header, Segment, Button } from "semantic-ui-react";
 import { useDispatch, useSelector } from "react-redux";
 import { createEvent, updateEvent } from "../eventActions";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from 'yup';
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
 import MyTextInput from "../../../app/common/form/MyTextInput";
+import MyTextArea from "../../../app/common/form/MyTextArea";
 
 export default function EventForm({ match, history }) {
   const dispatch = useDispatch();
@@ -24,53 +25,43 @@ export default function EventForm({ match, history }) {
   };
 
   const validationSchema = Yup.object({
-    title: Yup.string().required('You must provide a title')
-  })
-
-
-
-  // function handleFormSubmit() {
-  //   selectedEvent
-  //     ? dispatch(updateEvent({ ...selectedEvent, ...values }))
-  //     : dispatch(
-  //         createEvent({
-  //           ...values,
-  //           id: cuid(),
-  //           hostedBy: "Bob",
-  //           attendees: [],
-  //           hostPhotoURL: "/assets/user.png",
-  //         })
-  //       );
-  //   history.push("./events");
-  // }
-
- 
+    title: Yup.string().required("You must provide a title"),
+    category: Yup.string().required("You must provide a category"),
+    description: Yup.string().required(),
+    city: Yup.string().required(),
+    venue: Yup.string().required(),
+    date: Yup.string().required(),
+  });
 
   return (
     <Segment clearing>
-      <Header content={selectedEvent ? "Edit Event" : "Create New Event"} />
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          selectedEvent
+            ? dispatch(updateEvent({ ...selectedEvent, ...values }))
+            : dispatch(
+                createEvent({
+                  ...values,
+                  id: cuid(),
+                  hostedBy: "Bob",
+                  attendees: [],
+                  hostPhotoURL: "/assets/user.png",
+                })
+              );
+          history.push("./events");
+        }}
       >
         <Form className="ui form">
-          <MyTextInput name='title' placeholder='Event Title' />
-          <FormField>
-            <Field name="category" placeholder="Category" />
-          </FormField>
-          <FormField>
-            <Field name="description" placeholder="Description" />
-          </FormField>
-          <FormField>
-            <Field name="city" placeholder="City" />
-          </FormField>
-          <FormField>
-            <Field name="venue" placeholder="Venue" />
-          </FormField>
-          <FormField>
-            <Field name="date" placeholder="Event Date" type='date' />
-          </FormField>
+          <Header content="EVENT DETAILS" />
+          <MyTextInput name="title" placeholder="Event Title" />
+          <MyTextInput name="category" placeholder="Category" />
+          <MyTextArea name="description" placeholder="Description" rows={3} />
+          <Header content="EVENT LOCATION DETAILS" />
+          <MyTextInput name="city" placeholder="City" />
+          <MyTextInput name="venue" placeholder="Venue" />
+          <MyTextInput name="date" placeholder="Event Date" type='date' />
 
           <Button type="submit" floated="right" positive content="Submit" />
           <Button
