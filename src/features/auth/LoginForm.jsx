@@ -4,8 +4,12 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import MyTextInput from '../../app/common/form/MyTextInput';
 import { Button } from 'semantic-ui-react';
+import { useDispatch } from 'react-redux';
+import { signInUser } from './authActions';
+import { closeModal } from '../../app/common/modals/modalReducer';
 
 export default function LoginForm() {
+    const dispatch = useDispatch();
     return (
         <ModalWrapper size='mini' header='Sign into EventSpace'>
             <Formik
@@ -14,8 +18,10 @@ export default function LoginForm() {
                     email: Yup.string().required().email(),
                     password: Yup.string().required()
                 })}
-                onSubmit={values => {
-                    console.log(values);
+                onSubmit={(values, {setSubmitting}) => {
+                    dispatch(signInUser(values));
+                    setSubmitting(false);
+                    dispatch(closeModal());
                 }}
             >
                     {({isSubmitting, isValid, dirty}) => (
