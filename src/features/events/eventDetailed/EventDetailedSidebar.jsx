@@ -10,7 +10,7 @@ export default function EventDetailedSidebar({ attendees }) {
         attached="top"
         secondary
         inverted
-        color="teal"
+        color=""
       >
         {attendees.length} {attendees.length > 1 ? "People" : "Person"} Going
       </Segment>
