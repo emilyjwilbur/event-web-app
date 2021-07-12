@@ -90,7 +90,7 @@ export default function EventForm({ match, history }) {
             ? await updateEventInFirestore(values)
             : await addEventToFirestore(values);
             setSubmitting(false);
-          history.push("./events");
+          history.push("/events");
 
           } catch (error) {
             toast.error(error.message);
@@ -136,7 +136,7 @@ export default function EventForm({ match, history }) {
             floated="left" 
             color={selectedEvent.isCancelled ? 'green' : 'red' }
             content={selectedEvent.isCancelled ? 'Reactivate Event' : 'Cancel Event'}
-            onClick={() => setConfirmOpen(true)}
+            onClick={() => setConfirmOpen(true) }
             />}
 
             <Button 
@@ -151,7 +151,7 @@ export default function EventForm({ match, history }) {
             <Button
              disabled={isSubmitting}
               as={Link}
-              to="events"
+              to="/events"
               type="submit"
               floated="right"
               content="Cancel"
@@ -160,7 +160,7 @@ export default function EventForm({ match, history }) {
         )}
       </Formik>
       <Confirm
-        content={selectedEvent.isCancelled ? 'This will reactivate the event - are you sure?' : 'This will cancel the event - are you sure?'}
+        content={selectedEvent?.isCancelled ? 'This will reactivate the event - are you sure?' : 'This will cancel the event - are you sure?'}
         open={confirmOpen}
         onCancel={() => setConfirmOpen(false)}
         onConfirm={() => handleCancelToggle(selectedEvent)}

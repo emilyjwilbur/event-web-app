@@ -1,6 +1,6 @@
 import firebase from '../config/firebase';
 import { setUserProfileData } from './firestoreService';
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
 
 export function signInWithEmail(creds) {
    return firebase
@@ -42,4 +42,9 @@ export async function socialLogin(selectedProvider) {
     } catch (error) {
         toast.error(error.message);
     }
+}
+
+export function updateUserPassword(creds) {
+    const user = firebase.auth().currentUser;
+    return user.updatePassword(creds.newPassword1)
 }
