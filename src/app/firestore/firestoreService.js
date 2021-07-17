@@ -30,15 +30,18 @@ export function listenToEventFromFirestore(eventId) {
 }
 
 export function addEventToFirestore(event) {
+    const user = firebase.auth().currentUser;
     return db.collection('events').add({
         ...event,
-        hostedBy: 'Diana',
-        hostPhotoURL: 'https://randomuser.me/api/portraits/women/20.jpg',
+        hostUid: user.uid,
+        hostedBy: user.displayName,
+        hostPhotoURL: user.photoURL || null,
         attendees: firebase.firestore.FieldValue.arrayUnion({
-            id: cuid(),
-            displayName: 'Diana',
-            photoURL: 'https://randomuser.me/api/portraits/women/20.jpg'
-        })
+            id: user.uid,
+            displayName: user.displayName,
+            photoURL: user.photoURL || null
+        }),
+        attendeeIds: firebase.firestore.FieldValue.arrayUnion(user.uid)
     })
 }
 
@@ -129,4 +132,16 @@ export async function setMainPhoto(photo) {
 export function deletePhotoFromCollection(photoId) {
     const userUid = firebase.auth().currentUser.uid;
     return db.collection('users').doc(userUid).collection('photos').doc(photoId).delete();
+}
+
+export function addUserAttendance(event) {
+    const user = firebase.auth().currentUser;
+    return db.collection('events').doc(event.id).update({
+        attendees: firebase.firestore.FieldValue.arrayUnion({
+            id: user.uid,
+            displayName: user.displayName,
+            photoURL: user.photoURL || null
+        }),
+        attendeeIds: firebase.firestore.FieldValue.arrayUnion(user.uid)
+    })
 }
