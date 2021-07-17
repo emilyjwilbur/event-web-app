@@ -2,7 +2,7 @@ import React from 'react';
 import { Header, Menu } from 'semantic-ui-react';
 import Calendar from 'react-calendar';
 
-export default function EventFilters() {
+export default function EventFilters({setPredicate, predicate}) {
     return (
         <> 
             <Menu vertical size='large' style={{width: '100%'}} >
