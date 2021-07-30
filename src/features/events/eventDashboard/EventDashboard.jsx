@@ -43,7 +43,7 @@ export default function EventDashboard() {
         <EventList events={events} />
       </Grid.Column>
       <Grid.Column width={6}>
-        <EventFilters predicate={predicate} setPredicate={handleSetPredicate} />
+        <EventFilters predicate={predicate} setPredicate={handleSetPredicate} loading={loading} />
       </Grid.Column>
     </Grid>
   );
