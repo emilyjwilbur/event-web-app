@@ -4,12 +4,7 @@ body {
 }
 
 .ui.fixed.menu {
-  background-image: linear-gradient(
-   135deg,
-   rgb(64, 83, 190) 0%,
-   rgb(170, 122, 111) 69%,
-   rgb(202, 86, 57) 89%
-  )
+  background-color: #4267b2;
 }
 
 .ui.main.container {
