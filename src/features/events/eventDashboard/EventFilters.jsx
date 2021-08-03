@@ -19,8 +19,8 @@ export default function EventFilters({setPredicate, predicate, loading}) {
                  disabled={loading}
                  />
                 <Menu.Item content="I'm Hosting" 
-                active={predicate.get('filter') === 'isHosting'}
-                onClick={() => setPredicate('filter', 'isHosting')}
+                active={predicate.get('filter') === 'isHost'}
+                onClick={() => setPredicate('filter', 'isHost')}
                 disabled={loading}
                 />
             </Menu>
