@@ -68,14 +68,15 @@ export function deleteFromFirebaseStorage(filename) {
     return photoRef.delete();
 }
 
-export function addEventChatComment(eventId, comment) {
+export function addEventChatComment(eventId, values) {
     const user = firebase.auth().currentUser;
     const newComment = {
         displayName: user.displayName,
         photoURL: user.photoURL,
         uid: user.uid,
-        text: comment,
-        date: Date.now()
+        text: values.comment,
+        date: Date.now(),
+        parentId: values.parentId
     }
     return firebase.database().ref(`chat/${eventId}`).push(newComment);
 }
