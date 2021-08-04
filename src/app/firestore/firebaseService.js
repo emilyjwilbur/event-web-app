@@ -2,6 +2,12 @@ import firebase from '../config/firebase';
 import { setUserProfileData } from './firestoreService';
 import { toast } from 'react-toastify';
 
+export function firebaseObjectToArray(snapshot) {
+    if (snapshot) {
+        return Object.entries(snapshot).map(e => Object.assign({}, e[1], {id: e[0]}))
+    }
+}
+
 export function signInWithEmail(creds) {
    return firebase
    .auth()
@@ -73,3 +79,8 @@ export function addEventChatComment(eventId, comment) {
     }
     return firebase.database().ref(`chat/${eventId}`).push(newComment);
 }
+
+export function getEventChatRef(eventId) {
+    return firebase.database().ref(`chat/${eventId}`).orderByKey()
+}
+
