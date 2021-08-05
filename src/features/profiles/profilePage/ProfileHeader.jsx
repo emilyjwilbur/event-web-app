@@ -13,6 +13,7 @@ import {
 } from "semantic-ui-react";
 import { followUser, getFollowingDoc, unfollowUser } from "../../../app/firestore/firestoreService";
 import { setFollowUser, setUnfollowUser } from "../profileActions";
+import { CLEAR_FOLLOWINGS } from "../profileConstants";
 
 export default function ProfileHeader({ profile, isCurrentUser }) {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ export default function ProfileHeader({ profile, isCurrentUser }) {
       }
     }
     fetchFollowingDoc().then(() => setLoading(false));
+    return () => {
+      dispatch({type: CLEAR_FOLLOWINGS})
+    }
   }, [dispatch, profile.id, isCurrentUser])
 
   async function handleFollowUser() {
