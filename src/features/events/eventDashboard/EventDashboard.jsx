@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Grid } from "semantic-ui-react";
+import { Grid, Loader } from "semantic-ui-react";
 import EventList from "./EventList";
 import { useDispatch, useSelector } from "react-redux";
 import EventListItemPlaceholder from "./EventListItemPlaceholder";
@@ -7,9 +7,9 @@ import EventFilters from "./EventFilters";
 
 import EventsFeed from "./EventsFeed";
 
-import { fetchEvents, listenToEvents } from "../eventActions";
+import { fetchEvents } from "../eventActions";
 
-import useFirestoreCollection from "../../../app/hooks/useFirestoreCollection";
+
 
 export default function EventDashboard() {
   const limit = 2;
@@ -49,20 +49,18 @@ export default function EventDashboard() {
   return (
     <Grid>
       <Grid.Column width={10}>
+
         {loadingInitial && (
           <>
             <EventListItemPlaceholder />
             <EventListItemPlaceholder />
           </>
         )}
-        <EventList events={events} />
-        <Button
+        <EventList
+          events={events}
+          getNextEvents={handleFetchNextEvents}
           loading={loading}
-          disabled={!moreEvents}
-          onClick={handleFetchNextEvents}
-          color="blue"
-          content="More..."
-          floated="right"
+          moreEvents={moreEvents}
         />
       </Grid.Column>
       <Grid.Column width={6}>
@@ -72,6 +70,9 @@ export default function EventDashboard() {
           setPredicate={handleSetPredicate}
           loading={loading}
         />
+      </Grid.Column>
+      <Grid.Column width={10}>
+          <Loader active={loading} />
       </Grid.Column>
     </Grid>
   );
