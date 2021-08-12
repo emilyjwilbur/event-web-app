@@ -15,13 +15,13 @@ export default function UnauthModal() {
     <Modal open={open} size="mini" onClose={handleClose}>
       <Modal.Header content="You need to be signed in to do that" />
       <Modal.Content>
-        <p>Please either login or register to see this content</p>
-        <Button.Group>
+        <p>Please login or register to see this content</p>
+        <Button.Group widths={4}>
           <Button
             fluid
             color="blue"
             content="Login"
-            onClick={() => dispatch(openModal({ modalType: "Login Form" }))}
+            onClick={() => dispatch(openModal({ modalType: "LoginForm" }))}
           />
           <Button.Or />
           <Button
