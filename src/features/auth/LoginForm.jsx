@@ -44,7 +44,7 @@ export default function LoginForm() {
                                 type='submit'
                                 fluid
                                 size='large'
-                                color='teal'
+                                color='facebook'
                                 content='Login'
                             />
                             <Divider horizontal>Or</Divider>

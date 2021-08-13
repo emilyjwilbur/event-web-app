@@ -45,12 +45,12 @@ export default function PhotoUploadWidget({setEditMode}) {
   return (
     <Grid>
       <Grid.Column width={4}>
-        <Header color="teal" sub content="Step 1 - Add Photo" />
+        <Header color="blue" sub content="Step 1 - Add Photo" />
         <PhotoWidgetDropzone setFiles={setFiles} />
       </Grid.Column>
       <Grid.Column width={1} />
       <Grid.Column width={4}>
-        <Header color="teal" sub content="Step 2 - Resize" />
+        <Header color="blue" sub content="Step 2 - Resize" />
         {files.length > 0 && (
           <PhotoWidgetCropper
             setImage={setImage}
@@ -60,7 +60,7 @@ export default function PhotoUploadWidget({setEditMode}) {
       </Grid.Column>
       <Grid.Column width={1} />
       <Grid.Column width={4}>
-        <Header color="teal" sub content="Step 3 - Preview & Upload" />
+        <Header color="blue" sub content="Step 3 - Preview & Upload" />
         {files.length > 0 && (
           <>
             <div

@@ -44,7 +44,7 @@ export default function EventDetailedChat({ eventId }) {
         textAlign="center"
         attached="top"
         inverted
-        color="teal"
+        color='facebook'
         style={{ border: "none" }}
       >
         <Header>{authenticated ? 'Chat about this event' : 'Sign in to view and comment'}</Header>
@@ -60,7 +60,7 @@ export default function EventDetailedChat({ eventId }) {
         <Comment.Group>
           {createDataTree(comments).map((comment) => (
             <Comment key={comment.id}>
-              <Comment.Avatar src={comment.photoURL || "/assets/user.png"} />
+              <Comment.Avatar src={comment.photoURL || process.env.PUBLIC_URL + '/assets/user.png'} />
               <Comment.Content>
                 <Comment.Author as={Link} to={`/profile/${comment.uid}`}>
                   {comment.displayName}
@@ -99,7 +99,7 @@ export default function EventDetailedChat({ eventId }) {
                   {comment.childNodes.reverse().map((child) => (
                     <Comment key={child.id}>
                       <Comment.Avatar
-                        src={child.photoURL || "/assets/user.png"}
+                        src={child.photoURL || process.env.PUBLIC_URL + '/assets/user.png'}
                       />
                       <Comment.Content>
                         <Comment.Author as={Link} to={`/profile/${child.uid}`}>

@@ -46,7 +46,7 @@ export default function RegisterForm() {
                                 type='submit'
                                 fluid
                                 size='large'
-                                color='teal'
+                                color='facebook'
                                 content='Register'
                             />
                             <Divider horizontal>Or</Divider>

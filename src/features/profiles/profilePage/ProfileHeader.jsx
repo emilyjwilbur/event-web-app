@@ -73,7 +73,7 @@ export default function ProfileHeader({ profile, isCurrentUser }) {
               <Item.Image
                 avatar
                 size="small"
-                src={profile.photoURL || "/assets/user.png"}
+                src={profile.photoURL || process.env.PUBLIC_URL + '/assets/user.png'}
               />
               <Item.Content verticalAlign="middle">
                 <Header
