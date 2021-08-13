@@ -17,4 +17,4 @@ An event planning CRUD app built with React, enhanced by adding Redux and added 
 - Built a great looking application with Semantic UI
 
 ### Deployed Link:
- https://emilyjwilbur.github.io/event-web-app/
+ https://eventspace-a2198.web.app/
