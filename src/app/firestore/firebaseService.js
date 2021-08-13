@@ -94,5 +94,5 @@ export function getUserFeedRef() {
     .database()
     .ref(`posts/${user.uid}`)
     .orderByKey()
-    .limitToLast(5)
+    .limitToLast(5);
 }

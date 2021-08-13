@@ -3,9 +3,11 @@
         "Formik",
         "creds",
         "hashtable",
+        "modal",
         "scroller",
         "set",
         "toastify",
+        "unauth",
         "unfollow",
         "user"
     ],
