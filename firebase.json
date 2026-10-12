@@ -1,9 +1,9 @@
 {
   "functions": {
-    
     "source": "functions"
   },
   "hosting": {
+    "site": "rsvplease",
     "public": "build",
     "ignore": [
       "firebase.json",
