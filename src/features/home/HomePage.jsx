@@ -7,7 +7,7 @@ export default function HomePage({history}) {
             <Container>
                 <Header as='h1' inverted>
                     
-                    EventSpace
+                    rsvPlease
                 </Header>
                 <Button onClick={() => history.push('/events')} size='huge' inverted >
                     Get Started
