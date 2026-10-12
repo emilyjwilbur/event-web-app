@@ -1,6 +1,5 @@
 {
   "name": "event-web-app",
-  "homepage": "https://emilyjwilbur.github.io/event-web-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,7 +10,6 @@
     "cuid": "^2.1.8",
     "date-fns": "^2.22.1",
     "firebase": "^8.7.0",
-    "firebase-tools": "^9.16.0",
     "formik": "^2.2.9",
     "google-map-react": "^2.1.10",
     "history": "^4.10.1",
@@ -36,10 +34,9 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+    "deploy": "npm run build && npx firebase-tools@latest deploy --only hosting",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
