@@ -16,7 +16,7 @@ export default function NavBar({ setFormOpen }) {
       <Container>
         <Menu.Item as={NavLink} exact to="/" header>
           <img src={process.env.PUBLIC_URL + `/assets/logo.png`} alt="logo" style={{ marginRight: 15 }} />
-          rsvPlease
+          RSVPlease
         </Menu.Item>
         <Menu.Item as={NavLink} to="/events" name="Events" />
         

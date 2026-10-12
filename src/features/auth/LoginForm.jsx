@@ -12,7 +12,7 @@ import SocialLogin from './SocialLogin';
 export default function LoginForm() {
     const dispatch = useDispatch();
     return (
-        <ModalWrapper size='mini' header='Sign into EventSpace'>
+        <ModalWrapper size='mini' header='Sign into RSVPlease'>
             <Formik
                 initialValues={{email: '', password: ''}}
                 validationSchema={Yup.object ({

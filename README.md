@@ -1,4 +1,4 @@
-# EventSpace:
+# RSVPlease:
 
 An event planning CRUD app built with React, enhanced by adding Redux and added Firestore to provide the persistance layer for the application.
 
